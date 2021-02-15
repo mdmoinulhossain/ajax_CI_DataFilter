@@ -15,37 +15,38 @@ class Product_filter_model extends CI_Model
  {
   $query = "
   SELECT * FROM product 
-  WHERE product_status = '1' 
+  WHERE product_status = '1'
   ";
 
   if(isset($minimum_price, $maximum_price) && !empty($minimum_price) &&  !empty($maximum_price))
   {
-   $query .= "
-    AND product_price BETWEEN '".$minimum_price."' AND '".$maximum_price."'
-   ";
+   $query .= " 
+   AND product_price BETWEEN '".$minimum_price."' AND 
+        '".$maximum_price."'
+    ";
   }
 
   if(isset($brand))
   {
    $brand_filter = implode("','", $brand);
-   $query .= "
-    AND product_brand IN('".$brand_filter."')
+   $query .= " 
+   AND product_brand IN('".$brand_filter."')
    ";
   }
 
   if(isset($ram))
   {
    $ram_filter = implode("','", $ram);
-   $query .= "
-    AND product_ram IN('".$ram_filter."')
+   $query .= " 
+   AND product_ram IN('".$ram_filter."')
    ";
   }
 
   if(isset($storage))
   {
    $storage_filter = implode("','", $storage);
-   $query .= "
-    AND product_storage IN('".$storage_filter."')
+   $query .= " 
+   AND product_storage IN('".$storage_filter."')
    ";
   }
   return $query;
